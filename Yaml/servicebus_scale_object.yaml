@@ -1,0 +1,15 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: azure-servicebus-queue-scaledobject
+  namespace: meetup-sb
+spec:
+  scaleTargetRef:
+    name: cn-meetup-keda-sb-deployment
+  triggers:
+    - type: azure-servicebus
+      metadata:
+        topicName: cn-meetup-keda-sb-topic
+        subscriptionName: cn-meetup-keda-sb-sub
+        namespace: cn-meetup-keda-sb-ns
+        connectionFromEnv: cn-meetup-keda-sb-connectionstring

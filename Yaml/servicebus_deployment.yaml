@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: cn-meetup-keda-sb-deployment
+  name: cn-meetup-keda-sb-deployment
+  namespace: meetup-sb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cn-meetup-keda-sb-deployment
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: cn-meetup-keda-sb-deployment
+    spec:
+      containers:
+        - image: nginx
+          name: nginx
+          env:
+            - name: cn-meetup-keda-sb-connectionstring
+              value: Endpoint=sb://cn-meetup-keda-sb-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=6Fr3xfeb5Mmv/WJNWntw8BzJItp51rVhmqd4S0ApSKQ=
+          resources: {}
