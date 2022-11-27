@@ -22,5 +22,17 @@ module "demo1" {
   }
 }
 
+module "demo2" {
+  source     = "./demo_2"
+  event_name = local.name
+  sb = {
+    topicname         = module.servicebus.topic_name
+    subscriptionname  = module.servicebus.subscription_name
+    namespacename     = module.servicebus.namespace_name
+    connection_string = module.servicebus.connection_string
+  }
+}
+
+
 
 
