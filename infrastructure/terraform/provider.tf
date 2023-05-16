@@ -2,11 +2,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=3.30.0"
+      version = "=3.56.0"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "2.15.0"
+      version = "2.20.0"
     }
   }
 }
@@ -20,10 +20,10 @@ provider "kubernetes" {
   cluster_ca_certificate = module.cluster.kube_config_obj.cluster_ca_certificate
 }
 
-/* provider "kubernetes" {
-  config_path    = "~/.kube/config"
-  config_context = "my-context"
-} */
+#provider "kubernetes" {
+#  config_path    = "~/.kube/config"
+#  config_context = "docker-desktop"
+#}
 
 provider "azurerm" {
   features {}
